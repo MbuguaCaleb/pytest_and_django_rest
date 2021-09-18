@@ -21,7 +21,7 @@ class TestStudentModel(TestCase):
         c = a+b
 
         self.assertEqual(c, 3)
-
+    
     # test if model can be created
     def test_student_can_be_created(self):
         student1 = mixer.blend(Student, first_name='Caleb')

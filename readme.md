@@ -73,6 +73,22 @@ student1 = mixer.blend(Student, average_score=10)
 
 ```
 
+**Why Pytest??**
+
+```
+Why pytest over the django default test cases??
+
+Configuration
+(a)pip install pytest
+
+(b)pip install pytest pytest-django
+
+(c)configuration file called either pytest.ini || setup.cfg
+(c)pytest --->running tests
+
+
+```
+
 **Notes By**
 
 ```
