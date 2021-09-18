@@ -5,6 +5,15 @@ from classroom.models import Student
 
 class TestStudentModel(TestCase):
 
+    # Helps me avoid repeated code when writing Tests
+    def setUp(self):
+        # i am defining obj as property of the class
+        self.student1 = Student.objects.create(
+            first_name='Caleb',
+            last_name='Mbugua',
+            admission_number=7552
+        )
+
     def test_add_a_plus_b(self):
         a = 1
         b = 2
@@ -14,35 +23,17 @@ class TestStudentModel(TestCase):
 
     # test if model can be created
     def test_student_can_be_created(self):
-        Student.objects.create(
-            first_name='Caleb',
-            last_name='Mbugua',
-            admission_number=7559
-        )
-
-       # getting last student
-        student_result = Student.objects.last()
-
-        self.assertEqual(student_result.first_name, 'Caleb')
+        self.assertEqual(self.student1.first_name, 'Caleb')
 
     # test the str method
     def test_str_return(self):
-        Student.objects.create(
-            first_name='Caleb',
-            last_name='Mbugua',
-            admission_number=7559
-        )
-
-        # getting last student
-        student_result = Student.objects.last()
-
-        self.assertEqual(str(student_result), "Caleb")
+        self.assertEqual(str(self.student1), "Caleb")
 
     def test_grade_fail(self):
         Student.objects.create(
             first_name='Caleb',
             last_name='Mbugua',
-            admission_number=7559,
+            admission_number=7556,
             average_score=10
         )
 
@@ -54,20 +45,20 @@ class TestStudentModel(TestCase):
         Student.objects.create(
             first_name='Caleb',
             last_name='Mbugua',
-            admission_number=7559,
+            admission_number=7551,
             average_score=60
         )
 
         student_result = Student.objects.last()
 
         self.assertEqual(student_result.get_grade(), "Pass")
-    
+
     def test_grade_excellent(self):
         Student.objects.create(
-        first_name='Caleb',
-        last_name='Mbugua',
-        admission_number=7559,
-        average_score=90
+            first_name='Caleb',
+            last_name='Mbugua',
+            admission_number=7550,
+            average_score=90
         )
 
         student_result = Student.objects.last()

@@ -30,6 +30,18 @@ pip install python-decouple
 
 ```
 
+**Set Up**
+
+```
+
+Comes in very handy in writing Tests for functions that
+are replicated across various test cases..
+
+You can even instanticate a class the same way as you
+would a property an use it across various testcases
+
+```
+
 **Notes By**
 
 ```
