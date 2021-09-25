@@ -114,6 +114,9 @@ commands
 
 The important django files should have 100% code coverage
 
+urls.py, admin.py, models.py ,test.py and views.py
+
+
 ```
 
 **Notes By**
