@@ -93,6 +93,29 @@ Othercommands i can run from pytest
 
 ```
 
+**Pytest Coverage**
+
+```
+pip install pytest-cov
+
+Tells us and gives us how many lines of code are affected by our tests.
+
+Throigh a coverage report i can be able to know what has not been tested
+in my code
+
+Coverage settings(igonore is set at the .coverage.rc)
+
+commands
+
+(a)--cov=. Find the coverage of my current project directory
+
+(b)--cov-report=html -Generate a Coverage Report.
+
+
+The important django files should have 100% code coverage
+
+```
+
 **Notes By**
 
 ```

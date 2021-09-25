@@ -1,7 +1,13 @@
 from django.test import TestCase
 from classroom.models import Student
+from classroom.models import Classroom
 from mixer.backend.django import mixer
+import pytest
 # Create your tests here.
+
+# tells pytest not to save the data we are generaring but
+# rather just hold it in memory
+pytestmark = pytest.mark.django_db
 
 
 class TestStudentModel(TestCase):
@@ -28,7 +34,7 @@ class TestStudentModel(TestCase):
         student1 = mixer.blend(Student, first_name='Caleb')
         student_result = Student.objects.last()
 
-        assert student_result.first_name == 'Caleb'
+        assert str(student_result) == 'Caleb'
 
     # test the str method
     def test_str_return(self):
@@ -36,7 +42,6 @@ class TestStudentModel(TestCase):
         student_result = Student.objects.last()
         # self.assertEqual(student_result.first_name, "Caleb")
         assert student_result.first_name == "Caleb"
-
 
     def test_grade_fail(self):
         student1 = mixer.blend(Student, average_score=10)
@@ -55,3 +60,19 @@ class TestStudentModel(TestCase):
         student_result = Student.objects.last()
 
         assert student_result.get_grade() == "Excellent"
+
+    def test_grade_error(self):
+        student1 = mixer.blend(Student, average_score=900)
+
+        student_result = Student.objects.last()
+
+        assert student_result.get_grade() == "Error"
+
+
+##No need of passing the django default Unittest because we are using pytest
+class TestClassRoomModel:
+    def test_classroom_can_be_created(self):
+        classroom = mixer.blend(Classroom, name='Laravel')
+        classroom_result = Classroom.objects.last()
+
+        assert str(classroom_result) == 'Laravel'
