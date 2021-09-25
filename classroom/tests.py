@@ -20,40 +20,38 @@ class TestStudentModel(TestCase):
         b = 2
         c = a+b
 
-        self.assertEqual(c, 3)
-    
+        #self.assertEqual(c, 3)
+        assert c == 3
+
     # test if model can be created
     def test_student_can_be_created(self):
         student1 = mixer.blend(Student, first_name='Caleb')
         student_result = Student.objects.last()
 
-        self.assertEqual(student_result.first_name, 'Caleb')
+        assert student_result.first_name == 'Caleb'
 
     # test the str method
     def test_str_return(self):
         student1 = mixer.blend(Student, first_name='Caleb')
         student_result = Student.objects.last()
-        self.assertEqual(str(student_result), "Caleb")
+        # self.assertEqual(student_result.first_name, "Caleb")
+        assert student_result.first_name == "Caleb"
+
 
     def test_grade_fail(self):
         student1 = mixer.blend(Student, average_score=10)
-
         student_result = Student.objects.last()
-
-        self.assertEqual(student_result.get_grade(), "Fail")
+        assert student_result.get_grade() == "Fail"
 
     def test_grade_pass(self):
         student1 = mixer.blend(Student, average_score=60)
 
         student_result = Student.objects.last()
-
-        self.assertEqual(student_result.get_grade(), "Pass")
+        assert student_result.get_grade() == "Pass"
 
     def test_grade_excellent(self):
         student1 = mixer.blend(Student, average_score=90)
 
         student_result = Student.objects.last()
 
-        self.assertEqual(student_result.get_grade(), "Excellent")
-
-
+        assert student_result.get_grade() == "Excellent"

@@ -84,7 +84,11 @@ Configuration
 (b)pip install pytest pytest-django
 
 (c)configuration file called either pytest.ini || setup.cfg
-(c)pytest --->running tests
+(d)pytest --->running tests
+
+Othercommands i can run from pytest
+
+(e)pytest -v
 
 
 ```
